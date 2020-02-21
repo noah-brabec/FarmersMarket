@@ -1,0 +1,17 @@
+-- Your SQL goes here
+ALTER TABLE consumers
+ADD COLUMN email VARCHAR,
+ADD COLUMN phone VARCHAR,
+ADD COLUMN website VARCHAR;
+
+ALTER TABLE markets
+ADD COLUMN email VARCHAR,
+ADD COLUMN phone VARCHAR,
+ADD COLUMN website VARCHAR;
+
+
+ALTER TABLE producers
+ADD COLUMN email VARCHAR,
+ADD COLUMN phone VARCHAR,
+ADD COLUMN website VARCHAR,
+ADD COlUMN description TEXT;
