@@ -6,8 +6,8 @@
 
 use rocket_contrib::json::Json;
 
-pub mod models;
-use models::producer::Producer;
+pub mod api;
+use crate::api::components::producer::model::Producer;
 
 #[get("/")]
 fn index() -> &'static str {

@@ -1,6 +1,6 @@
 use uuid::Uuid;
-use super::geolocation::Geolocation;
-use super::address::Address;
+use crate::api::components::address::geolocation::Geolocation;
+use crate::api::components::address::model::Address;
 
 #[derive(Serialize, Deserialize, Default, Queryable)]
 pub struct Producer {

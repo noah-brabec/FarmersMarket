@@ -1,4 +1,4 @@
-pub mod models;
+pub mod api;
 pub mod schema;
 
 #[macro_use] extern crate dotenv;
