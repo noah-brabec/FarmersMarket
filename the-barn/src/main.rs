@@ -1,30 +1,13 @@
 #![feature(proc_macro_hygiene, decl_macro)]
 
-#[marco_use]
-extern crate diesel;
-extern crate dotenv;
-extern crate rocket;
-extern crate serde_derive;
-extern crate rocket_contrib;
+#[macro_use] extern crate diesel;
+#[macro_use] extern crate rocket;
+#[macro_use] extern crate serde;
 
 use rocket_contrib::json::Json;
-use diesel::prelude::*;
-use diesel::pg::PgConnection;
-use dotenv::dotenv;
-use std::env;
 
 pub mod models;
 use models::producer::Producer;
-
-pub fn establish_connection() -> PgConnection {
-    dotenv().ok();
-
-    let database_url = env::var("DATABASE_URL")
-        .expect("DATABASE_URL must be set");
-    PgConnection::establish(&database_url)
-        .expect(&format!("Error connecting to {}", database_url))
-}
-
 
 #[get("/")]
 fn index() -> &'static str {

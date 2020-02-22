@@ -1,11 +1,11 @@
-use uuid::UUID;
+use uuid::Uuid;
 
 pub struct Item {
-    id: UUID,
+    id: Uuid,
     name: String,
     price: f64,
     price_unit: String,
-    producer_id: UUID,
+    producer_id: Uuid,
     description: String,
     post_date: String,
     tags: Vec<String>

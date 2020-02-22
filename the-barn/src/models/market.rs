@@ -1,6 +1,6 @@
 use uuid::UUID;
-use crate address::Address;
-use crate geolocation::Geolocation;
+use super::address::Address;
+use super::geolocation::Geolocation;
 
 pub struct market {
     id: UUID,
