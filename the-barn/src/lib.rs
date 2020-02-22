@@ -1,9 +1,8 @@
 pub mod models;
 pub mod schema;
 
-#[macro_use]
-extern crate diesel;
-extern crate dotenv;
+#[macro_use] extern crate dotenv;
+#[macro_use] extern crate diesel;
 #[macro_use] extern crate serde;
 #[macro_use] extern crate serde_json;
 

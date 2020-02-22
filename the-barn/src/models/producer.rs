@@ -1,6 +1,3 @@
-extern crate serde;
-extern crate serde_json;
-
 use uuid::Uuid;
 use super::geolocation::Geolocation;
 use super::address::Address;
