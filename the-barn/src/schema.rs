@@ -5,7 +5,6 @@ table! {
         address -> Json,
         #[sql_name = "type"]
         type_ -> Varchar,
-        geolocation -> Json,
         description -> Nullable<Text>,
         markets -> Nullable<Array<Uuid>>,
         email -> Nullable<Varchar>,
@@ -32,7 +31,6 @@ table! {
         id -> Uuid,
         name -> Varchar,
         address -> Json,
-        geolocation -> Json,
         description -> Nullable<Text>,
         email -> Nullable<Varchar>,
         phone -> Nullable<Varchar>,
@@ -47,7 +45,6 @@ table! {
         address -> Json,
         #[sql_name = "type"]
         type_ -> Varchar,
-        geolocation -> Json,
         markets -> Nullable<Array<Uuid>>,
         email -> Nullable<Varchar>,
         phone -> Nullable<Varchar>,
