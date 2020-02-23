@@ -1,5 +1,8 @@
 use uuid::Uuid;
+use crate::schema::items
 
+#[table_name="items"]
+#[derive(Serialize, Deserialize, Insertable, Queryable)]
 pub struct Item {
     id: Uuid,
     name: String,

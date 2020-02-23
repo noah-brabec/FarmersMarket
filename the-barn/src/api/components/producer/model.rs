@@ -1,7 +1,7 @@
 //The model that follows the db schema
-
-use crate::api::components::address::geolocation::Geolocation;
+use diesel::pg::types::sql_types::Json;
 use crate::api::components::address::model::Address;
+use crate::schema::producers;
 
 #[derive(Serialize, Deserialize)]
 pub enum ProducerType {
@@ -12,11 +12,12 @@ pub enum ProducerType {
     MILL
 }
 
-#[derive(Serialize, Deserialize, Queryable)]
+#[table_name="producers"]
+#[derive(Serialize, Deserialize, Queryable, Insertable)]
 pub struct Producer {
     id: uuid::Uuid,
     pub name: String,
-    address: Address,
+    address: Json,
     type_: String,
     markets: Option<Vec<uuid::Uuid>>,
     email: Option<String>,

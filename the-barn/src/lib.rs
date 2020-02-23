@@ -1,10 +1,10 @@
 pub mod api;
 pub mod schema;
 
-#[macro_use] extern crate dotenv;
+//#[macro_use] extern crate dotenv;
 #[macro_use] extern crate diesel;
 #[macro_use] extern crate serde;
-#[macro_use] extern crate serde_json;
+//#[macro_use] extern crate serde_json;
 
 use diesel::prelude::*;
 use diesel::pg::PgConnection;
