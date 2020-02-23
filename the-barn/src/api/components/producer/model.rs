@@ -1,17 +1,26 @@
-use uuid::Uuid;
+//The model that follows the db schema
+
 use crate::api::components::address::geolocation::Geolocation;
 use crate::api::components::address::model::Address;
 
-#[derive(Serialize, Deserialize, Default, Queryable)]
+#[derive(Serialize, Deserialize)]
+pub enum ProducerType {
+    GENERIC,
+    PLANT,
+    COFFEE,
+    MEAT,
+    MILL
+}
+
+#[derive(Serialize, Deserialize, Queryable)]
 pub struct Producer {
-    pub id: Option<Uuid>,
+    id: uuid::Uuid,
     pub name: String,
-    pub address: Address,
-    pub type_: String,
-    pub geolocation: Option<Geolocation>,
-    pub markets: Option<Vec<Uuid>>,
-    pub email: Option<String>,
-    pub phone: Option<String>,
-    pub website: Option<String>,
-    pub description: Option<String>
+    address: Address,
+    type_: String,
+    markets: Option<Vec<uuid::Uuid>>,
+    email: Option<String>,
+    phone: Option<String>,
+    website: Option<String>,
+    description: Option<String>
 }

@@ -8,7 +8,6 @@ pub struct Consumer {
     name: String,
     address: Address,
     type_: String,
-    geolocation: Geolocation,
     description: Option<String>,
     pub markets: Option<Vec<Uuid>>,
     email: Option<String>,

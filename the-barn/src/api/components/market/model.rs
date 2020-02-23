@@ -7,7 +7,6 @@ pub struct market {
     id: UUID,
     name: String,
     address: Address,
-    geolocation: Geolocation,
     description: String,
     email: String,
     phone: String,
