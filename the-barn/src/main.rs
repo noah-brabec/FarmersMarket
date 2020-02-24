@@ -4,9 +4,14 @@
 #[macro_use] extern crate rocket;
 #[macro_use] extern crate serde;
 
-use rocket_contrib::json::Json;
-
 pub mod api;
+pub mod schema;
+
+use rocket_contrib::json::Json;
+use diesel::prelude::*;
+use diesel::pg::PgConnection;
+use dotenv::dotenv;
+use std::env;
 use crate::api::components::producer::model::Producer;
 
 #[get("/")]
@@ -25,6 +30,15 @@ fn post_producer(producer: Json<Producer>) -> String {
     let prod = producer.into_inner();
     println!("{}", prod.name);
     return "hello".to_string();
+}
+
+pub fn establish_connection() -> PgConnection {
+    dotenv().ok();
+
+    let database_url = env::var("DATABASE_URL")
+        .expect("DATABASE_URL must be set");
+    PgConnection::establish(&database_url)
+        .expect(&format!("Error connecting to {}", database_url))
 }
 
 fn main() {

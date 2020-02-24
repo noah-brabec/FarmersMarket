@@ -1,6 +1,4 @@
 //The model that follows the db schema
-use diesel::pg::types::sql_types::Json;
-use crate::api::components::address::model::Address;
 use crate::schema::producers;
 
 #[derive(Serialize, Deserialize)]
@@ -17,7 +15,7 @@ pub enum ProducerType {
 pub struct Producer {
     id: uuid::Uuid,
     pub name: String,
-    address: Json,
+    address: serde_json::Value,
     type_: String,
     markets: Option<Vec<uuid::Uuid>>,
     email: Option<String>,

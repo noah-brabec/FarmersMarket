@@ -1,5 +1,4 @@
 extern crate serde;
-extern crate serde_json;
 
 use crate::api::components::address::geolocation::Geolocation;
 
