@@ -12,24 +12,10 @@ use diesel::prelude::*;
 use diesel::pg::PgConnection;
 use dotenv::dotenv;
 use std::env;
-use crate::api::components::producer::model::Producer;
 
 #[get("/")]
 fn index() -> &'static str {
     "Hello, world!"
-}
-
-#[get("/producers")]
-fn get_producers() -> Json<String> {
-   
-   return Json("farms".to_string());
-}
-
-#[post("/producers", format = "application/json", data = "<producer>")]
-fn post_producer(producer: Json<Producer>) -> String {
-    let prod = producer.into_inner();
-    println!("{}", prod.name);
-    return "hello".to_string();
 }
 
 pub fn establish_connection() -> PgConnection {
@@ -43,7 +29,7 @@ pub fn establish_connection() -> PgConnection {
 
 fn main() {
     rocket::ignite().mount("/", routes![index])
-                    .mount("/producers", routes![get_producers, post_producer])
+                    .mount("/producers", routes![index])
                     .launch();
 }
 
