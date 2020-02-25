@@ -3,13 +3,12 @@ table! {
         id -> Uuid,
         name -> Varchar,
         address -> Json,
-        #[sql_name = "type"]
-        type_ -> Varchar,
         description -> Nullable<Text>,
         markets -> Nullable<Array<Uuid>>,
         email -> Nullable<Varchar>,
         phone -> Nullable<Varchar>,
         website -> Nullable<Varchar>,
+        con_type -> Nullable<Int2>,
     }
 }
 
@@ -43,13 +42,12 @@ table! {
         id -> Uuid,
         name -> Varchar,
         address -> Json,
-        #[sql_name = "type"]
-        type_ -> Varchar,
         markets -> Nullable<Array<Uuid>>,
         email -> Nullable<Varchar>,
         phone -> Nullable<Varchar>,
         website -> Nullable<Varchar>,
         description -> Nullable<Text>,
+        prod_type -> Nullable<Int2>,
     }
 }
 
