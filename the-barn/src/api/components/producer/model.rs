@@ -1,5 +1,6 @@
 //The model that follows the db schema
 use crate::schema::producers;
+use getset::{CopyGetters, Setters};
 
 #[repr(i16)]
 #[derive(Serialize, Deserialize)]
@@ -12,9 +13,10 @@ pub enum ProducerType {
 }
 
 #[table_name="producers"]
-#[derive(Serialize, Deserialize, Queryable, Insertable)]
+#[derive(Setters, CopyGetters, Serialize, Deserialize, Queryable, Insertable)]
+#[getset(set = "pub")]
 pub struct Producer {
-    id: uuid::Uuid,
+    pub id: uuid::Uuid,
     pub name: String,
     address: serde_json::Value,
     markets: Option<Vec<uuid::Uuid>>,

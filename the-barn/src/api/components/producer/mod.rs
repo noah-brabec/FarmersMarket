@@ -1,4 +1,4 @@
 mod controller;
 pub mod model;
-mod routes;
+pub mod routes;
 mod service;

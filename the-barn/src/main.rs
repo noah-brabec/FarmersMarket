@@ -12,6 +12,7 @@ use diesel::prelude::*;
 use diesel::pg::PgConnection;
 use dotenv::dotenv;
 use std::env;
+use api::components::producer::routes;
 
 #[get("/")]
 fn index() -> &'static str {
@@ -28,8 +29,9 @@ pub fn establish_connection() -> PgConnection {
 }
 
 fn main() {
-    rocket::ignite().mount("/", routes![index])
-                    .mount("/producers", routes![index])
+    rocket::ignite().mount("/", routes![index,
+                                        routes::post_producer,
+                                        routes::get_producers])
                     .launch();
 }
 
