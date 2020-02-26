@@ -15,7 +15,9 @@ pub fn get_all_prods() -> Vec<Producer> {
 }
 
 pub fn get_prod_by_id(uuid : Uuid) -> Producer {
-    let bytes = uuid.as_bytes();
+    //This UUID type is from the crate rocket_contrib::uuid and uses the general uuid crate v0.7.4
+    let bytes = uuid.as_bytes(); 
+    //This UUID type is from the general uuid crate and is on v0.6.5 because of a diesel dependency
     let other_uuid = uuid::Uuid::from_bytes(bytes).expect("Could not convert uuid v0.7.4 to v0.6.5");
     service::get_prod_by_id(other_uuid)
 }
