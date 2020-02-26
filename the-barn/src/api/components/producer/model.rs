@@ -13,7 +13,7 @@ pub enum ProducerType {
 }
 
 #[table_name="producers"]
-#[derive(Setters, CopyGetters, Serialize, Deserialize, Queryable, Insertable)]
+#[derive(Setters, CopyGetters, Serialize, Deserialize, AsChangeset, Queryable, Insertable)]
 #[getset(set = "pub")]
 pub struct Producer {
     pub id: uuid::Uuid,

@@ -17,13 +17,18 @@ fn get_prods_in_radius(radius : i32) -> String {
 }
 
 #[get("/producers/<id>")]
-fn get_prod_by_id(id : Uuid) -> Json<Producer> {
+pub fn get_prod_by_id(id : Uuid) -> Json<Producer> {
    Json(controller::get_prod_by_id(id))
 }
 
 #[post("/producers", format = "application/json", data = "<producer>")]
 pub fn post_producer(producer: Json<Producer>) -> String {
     let prod = producer.into_inner();
-    controller::assign_uuid(prod);
+    controller::construct_producer(prod);
     return "hello".to_string();
+}
+
+#[put("/producers", format = "application/json", data = "<body>")]
+pub fn update_producer(body : Json<Producer>) -> Json<Producer> {
+    controller::update_producer(body)
 }

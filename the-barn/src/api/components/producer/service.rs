@@ -33,3 +33,11 @@ pub fn get_prod_by_id(uuid : Uuid) -> Producer {
     let db_con = establish_connection();
     producers::table.find(uuid).first(&db_con).expect("Could not find Producer")
 }
+
+pub fn update_producer(producer : Producer) -> Producer {
+    let db_con = establish_connection();
+    diesel::update(producers::table)
+        .set(&producer)
+        .get_result(&db_con)
+        .expect("Could not update producer")
+}
