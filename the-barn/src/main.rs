@@ -7,7 +7,6 @@
 pub mod api;
 pub mod schema;
 
-use rocket_contrib::json::Json;
 use diesel::prelude::*;
 use diesel::pg::PgConnection;
 use dotenv::dotenv;

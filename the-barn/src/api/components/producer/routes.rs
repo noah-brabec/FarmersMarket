@@ -17,9 +17,8 @@ fn get_prods_in_radius(radius : i32) -> String {
 }
 
 #[get("/producers/<id>")]
-fn get_prod_by_id(id : Uuid) -> String {
-
-    return format!("The uuid is {}", id);
+fn get_prod_by_id(id : Uuid) -> Json<Producer> {
+   Json(controller::get_prod_by_id(id))
 }
 
 #[post("/producers", format = "application/json", data = "<producer>")]
