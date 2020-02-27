@@ -5,6 +5,7 @@
 #[macro_use] extern crate serde;
 
 pub mod api;
+pub mod database;
 pub mod schema;
 
 use diesel::prelude::*;
