@@ -31,7 +31,8 @@ fn main() {
     rocket::ignite().mount("/", routes![index,
                                         routes::post_producer,
                                         routes::get_producers,
-                                        routes::get_prod_by_id])
+                                        routes::get_prod_by_id,
+                                        routes::delete_producer])
                     .launch();
 }
 

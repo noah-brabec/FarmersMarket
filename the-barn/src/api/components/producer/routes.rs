@@ -9,12 +9,13 @@ use rocket_contrib::uuid::Uuid;
 pub fn get_producers() -> Json<Vec<Producer>> {
     Json(controller::get_all_prods())
 }
-
+/*
 #[get("/producers/<radius>")]
 fn get_prods_in_radius(radius : i32) -> String {
 
     return format!("Get poducers within {} miles of you", radius);
 }
+)*/
 
 #[get("/producers/<id>")]
 pub fn get_prod_by_id(id : Uuid) -> Json<Producer> {
@@ -31,4 +32,9 @@ pub fn post_producer(producer: Json<Producer>) -> String {
 #[put("/producers", format = "application/json", data = "<body>")]
 pub fn update_producer(body : Json<Producer>) -> Json<Producer> {
     controller::update_producer(body)
+}
+
+#[delete("/producers/<id>")]
+pub fn delete_producer(id : Uuid) -> Json<String> {
+    controller::delete_producer(id)
 }

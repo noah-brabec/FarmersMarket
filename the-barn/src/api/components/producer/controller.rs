@@ -26,3 +26,11 @@ pub fn get_prod_by_id(uuid : Uuid) -> Producer {
 pub fn update_producer(body : Json<Producer>) -> Json<Producer> {
     Json(service::update_producer(body.into_inner()))
 }
+
+pub fn delete_producer(uuid : Uuid) -> Json<String> {
+    let bytes = uuid.as_bytes();
+    let other_uuid = uuid::Uuid::from_bytes(bytes).expect("Could not convert uuid v0.7.4 to v0.6.5");
+    let num_deleted = service::delete_producer(other_uuid);
+    let response = format!("num_deleted: {}", num_deleted);
+    Json(response)
+}

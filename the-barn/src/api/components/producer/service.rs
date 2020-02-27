@@ -41,3 +41,10 @@ pub fn update_producer(producer : Producer) -> Producer {
         .get_result(&db_con)
         .expect("Could not update producer")
 }
+
+pub fn delete_producer(uuid : Uuid) -> usize {
+    let db_con = establish_connection();
+    diesel::delete(producers::table.filter(producers::id.eq(uuid)))
+        .execute(&db_con)
+        .expect("Could not delete producer")
+}
