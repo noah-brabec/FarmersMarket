@@ -9,6 +9,7 @@ use rocket_contrib::uuid::Uuid;
 pub fn get_producers() -> Json<Vec<Producer>> {
     Json(controller::get_all_prods())
 }
+
 /*
 #[get("/producers/<radius>")]
 fn get_prods_in_radius(radius : i32) -> String {
