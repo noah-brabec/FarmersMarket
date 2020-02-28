@@ -29,7 +29,8 @@ pub fn establish_connection() -> PgConnection {
 }
 
 fn main() {
-    rocket::ignite().mount("/", routes![index,
+    rocket::ignite().manage(database::init_pool())
+                    .mount("/", routes![index,
                                         routes::post_producer,
                                         routes::get_producers,
                                         routes::get_prod_by_id,
