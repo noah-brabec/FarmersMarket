@@ -13,6 +13,6 @@ serde_json = "1.0.48"
 serde_derive = "1.0.104"
 rocket_contrib = { version = "0.4.2", features = ["uuid"] }
 uuid = { version = "0.6.5", features = ["v4", "serde"] }
-diesel = { version = "1.0.0", features = ["postgres", "uuid", "serde_json"] }
+diesel = { version = "1.0.0", features = ["postgres", "uuid", "serde_json", "r2d2"] }
 dotenv = "0.9.0"
 getset = "0.1.0"

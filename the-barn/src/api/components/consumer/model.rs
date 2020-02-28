@@ -1,12 +1,10 @@
 use uuid::Uuid;
-use super::geolocation::Geolocation;
-use super::address::Address;
 
 #[derive(Serialize, Deserialize, Default, Queryable)]
 pub struct Consumer {
     id: Uuid,
     name: String,
-    address: Address,
+    address: serde_json::Value,
     type_: String,
     description: Option<String>,
     pub markets: Option<Vec<Uuid>>,
