@@ -8,7 +8,7 @@ use crate::api::components::market::service;
 // Generates a new uuid, assings it to the market and passes it to service
 pub fn construct_market(mut market : Market, connection : DbConn) -> Market {
     let new_uuid = uuid::Uuid::new_v4();
-    prod.set_id(new_uuid);
+    market.set_id(new_uuid);
     service::insert_new_market(market, connection)
 }
 

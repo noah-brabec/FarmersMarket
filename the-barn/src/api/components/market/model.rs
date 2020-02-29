@@ -3,9 +3,9 @@ use getset::{CopyGetters, Setters};
 
 #[table_name="markets"]
 #[derive(Setters, CopyGetters, Serialize, Deserialize, AsChangeset, Queryable, Insertable)]
-#[getset(set = "pub")
+#[getset(set = "pub")]
 pub struct Market {
-    id: uuid::UUID,
+    id: uuid::Uuid,
     name: String,
     address: serde_json::Value,
     description: Option<String>,
