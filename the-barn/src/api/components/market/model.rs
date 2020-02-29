@@ -1,5 +1,5 @@
 use crate::schema::markets;
-use getset::{CopyGetters, Setters}
+use getset::{CopyGetters, Setters};
 
 #[table_name="markets"]
 #[derive(Setters, CopyGetters, Serialize, Deserialize, AsChangeset, Queryable, Insertable)]
