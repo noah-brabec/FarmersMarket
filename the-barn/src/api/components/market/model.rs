@@ -1,14 +1,15 @@
-use uuid::UUID;
-use super::address::Address;
-use super::geolocation::Geolocation;
+use crate::schema::markets;
+use getset::{CopyGetters, Setters}
 
-#[derive(Serialize, Deserialize, Default, Queryable)]
-pub struct market {
-    id: UUID,
+#[table_name="markets"]
+#[derive(Setters, CopyGetters, Serialize, Deserialize, AsChangeset, Queryable, Insertable)]
+#[getset(set = "pub")
+pub struct Market {
+    id: uuid::UUID,
     name: String,
-    address: Address,
-    description: String,
-    email: String,
-    phone: String,
-    website: String
+    address: serde_json::Value,
+    description: Option<String>,
+    email: Option<String>,
+    phone: Option<String>,
+    website: Option<String>
 }
