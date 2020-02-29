@@ -8,14 +8,7 @@ pub mod api;
 pub mod schema;
 pub mod database;
 
-//use diesel::prelude::*;
-//use diesel::pg::PgConnection;
-//use dotenv::dotenv;
-//use std::env;
 use api::components::producer::routes;
-
-//#[database("")]
-//struct DBConn(diesel::PgConnection);
 
 #[get("/")]
 fn index() -> &'static str {
