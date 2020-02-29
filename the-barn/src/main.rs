@@ -5,27 +5,21 @@
 #[macro_use] extern crate serde;
 
 pub mod api;
-pub mod database;
 pub mod schema;
+pub mod database;
 
-use diesel::prelude::*;
-use diesel::pg::PgConnection;
-use dotenv::dotenv;
-use std::env;
+//use diesel::prelude::*;
+//use diesel::pg::PgConnection;
+//use dotenv::dotenv;
+//use std::env;
 use api::components::producer::routes;
+
+//#[database("")]
+//struct DBConn(diesel::PgConnection);
 
 #[get("/")]
 fn index() -> &'static str {
     "Hello, world!"
-}
-
-pub fn establish_connection() -> PgConnection {
-    dotenv().ok();
-
-    let database_url = env::var("DATABASE_URL")
-        .expect("DATABASE_URL must be set");
-    PgConnection::establish(&database_url)
-        .expect(&format!("Error connecting to {}", database_url))
 }
 
 fn main() {
