@@ -1,12 +1,15 @@
-module Login exposing (Model, Msg, init, subscriptions, update, view)
+module Login exposing (..)
 
-import Browser
-import Html exposing (..)
+import Bootstrap.CDN as Cdn
+import Bootstrap.Grid.Col as Col
+import Bootstrap.Grid.Row as Row
+import Browser exposing (Document)
+import Html exposing (Html, div, h4, text)
 
 
-main : Program flags Model Msg
+main : Program () Model Msg
 main =
-    Browser.element
+    Browser.document
         { init = init
         , view = view
         , update = update
@@ -15,30 +18,20 @@ main =
 
 
 type alias Model =
-    { key : Nav.Key
-    , url : Url.Url
-    , property : propertyType
+    { statusText : String
     }
 
 
-init : flags -> ( Model, Cmd Msg )
-init flags =
-    ( Model modelInitialValue, Cmd.none )
+init : () -> ( Model, Cmd Msg )
+init _ =
+    ( { statusText = "Ready"
+      }
+    , Cmd.none
+    )
 
 
 type Msg
-    = Msg1
-    | Msg2
-
-
-update : Msg -> Model -> ( Model, Cmd Msg )
-update msg model =
-    case msg of
-        Msg1 ->
-            ( model, Cmd.none )
-
-        Msg2 ->
-            ( model, Cmd.none )
+    = Option1
 
 
 subscriptions : Model -> Sub Msg
@@ -46,7 +39,28 @@ subscriptions model =
     Sub.none
 
 
-view : Model -> Html Msg
-view model =
+update : Msg -> Model -> ( Model, Cmd Msg )
+update msg model =
+    case msg of
+        option1 ->
+            ( model, Cmd.none )
+
+
+type alias Document msg =
+    { title : String
+    , body : List (Html msg)
+    }
+
+
+viewBody : Model -> Html msg
+viewBody model =
     div []
-        [ text "New Element" ]
+        [ h4 [] [ text "Hello Port 8000" ]
+        ]
+
+
+view : Model -> Document msg
+view model =
+    { title = model.statusText
+    , body = [ viewBody model ]
+    }
