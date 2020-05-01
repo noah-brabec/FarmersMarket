@@ -1,8 +1,8 @@
 module Login exposing (..)
 
-import Bootstrap.CDN as Cdn
+import Bootstrap.CDN as CDN
+import Bootstrap.Grid as Grid
 import Bootstrap.Grid.Col as Col
-import Bootstrap.Grid.Row as Row
 import Browser exposing (Document)
 import Html exposing (Html, div, h4, text)
 
@@ -18,13 +18,15 @@ main =
 
 
 type alias Model =
-    { statusText : String
+    { title : String
+    , number : Int
     }
 
 
 init : () -> ( Model, Cmd Msg )
 init _ =
-    ( { statusText = "Ready"
+    ( { title = "Farmers Market"
+      , number = 1
       }
     , Cmd.none
     )
@@ -54,13 +56,18 @@ type alias Document msg =
 
 viewBody : Model -> Html msg
 viewBody model =
-    div []
-        [ h4 [] [ text "Hello Port 8000" ]
+    Grid.container []
+        [ CDN.stylesheet
+        , Grid.row []
+            [ Grid.col [ Col.xs ] [ text "One" ]
+            , Grid.col [ Col.xs ] [ text "Two" ]
+            , Grid.col [ Col.xs ] [ text "Three" ]
+            ]
         ]
 
 
 view : Model -> Document msg
 view model =
-    { title = model.statusText
-    , body = [ viewBody model ]
+    { title = model.title
+    , body = [ div [] [ viewBody model ] ]
     }
