@@ -1,10 +1,14 @@
 module Login exposing (..)
 
+import Bootstrap.Button as Button
 import Bootstrap.CDN as CDN
+import Bootstrap.Form as Form
+import Bootstrap.Form.Input as Input
 import Bootstrap.Grid as Grid
 import Bootstrap.Grid.Col as Col
 import Browser exposing (Document)
-import Html exposing (Html, div, h4, text)
+import Html exposing (..)
+import Html.Attributes exposing (..)
 
 
 main : Program () Model Msg
@@ -59,9 +63,20 @@ viewBody model =
     Grid.container []
         [ CDN.stylesheet
         , Grid.row []
-            [ Grid.col [ Col.xs ] [ text "One" ]
-            , Grid.col [ Col.xs ] [ text "Two" ]
-            , Grid.col [ Col.xs ] [ text "Three" ]
+            [ Grid.col []
+                [ Form.form []
+                    [ Form.group []
+                        [ Form.label [ for "myemail" ] [ text "Email Address" ]
+                        , Input.email [ Input.id "myemail" ]
+                        , Form.help [] [ text "Be careful, we might steal this" ]
+                        ]
+                    , Form.group []
+                        [ Form.label [ for "mypwd" ] [ text "Password" ]
+                        , Input.password [ Input.id "mypwd" ]
+                        ]
+                    , Button.button [ Button.primary ] [ text "submit" ]
+                    ]
+                ]
             ]
         ]
 
